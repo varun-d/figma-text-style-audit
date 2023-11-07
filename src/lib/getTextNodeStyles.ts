@@ -31,7 +31,7 @@ export function getTextNodeStyles(textNodeCollection: TextNode[]): CSVModel[] {
   textNodeCollection.map((node) => {
     const txtStyleID = node.textStyleId;
     const fillStyleID = node.fillStyleId;
-    console.log(node.fontSize, node.lineHeight, node.fontWeight);
+    console.log(node.lineHeight, node.fontWeight);
     // Text Style added into _stylesObjArr
     if (txtStyleID != "") {
       if (txtStyleID === figma.mixed) {
@@ -51,7 +51,9 @@ export function getTextNodeStyles(textNodeCollection: TextNode[]): CSVModel[] {
           : libraryLocation.LOCAL;
         _stylesObjArr.push({
           styleType: "Text Style",
-          nodeName: node.name,
+          nodeName: `${node.name};${String(node.fontSize)};${String(
+            node.fontWeight
+          )};${String(node.lineHeight)}`,
           styleName: textStyle?.name!, // Note the ! on style?.name as it may be undefined.
           libraryLocation: libLoc,
         });
