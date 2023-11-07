@@ -6,6 +6,10 @@ figma.ui.resize(300, 500);
 // Don't care about invisible
 figma.skipInvisibleInstanceChildren = true;
 
+/**
+ * @todo Cleanup
+ */
+
 // Enum for Library Type. No Lib, Local, Remote (Team Libraries) or Mixed
 // enum libraryLocation {
 //   NONE = "No Library",
