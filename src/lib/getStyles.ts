@@ -1,3 +1,8 @@
+/**
+ * @file Func lib for text and fill styles.
+ * @author Varun Dhanwantri <varun@thisnameless.com>
+ */
+
 // Enum for Library Type. No Lib, Local, Remote (Team Libraries) or Mixed
 enum libraryLocation {
   NONE = "No Library",
@@ -13,7 +18,18 @@ type CSVModel = {
   libraryLocation: libraryLocation;
 };
 
-// This looks complicated. Trust me, it's not...
+/**
+ * Get text and fill styles for Figma text node from TextNode array,
+ * and return a CSV ready object array
+ * @author Varun Dhanwantri <varun@thisnameless.com>
+ * @version 0.7
+ * @param {TextNode[]} textNodeCollection - TextNode Array
+ * @returns {CSVModel[]} - The text and fill style object array ready for CSV.
+ * @see {@link http://github.com|GitHub}
+ * @todo Pending Githib link
+ * @since 1.0.1
+ * @constructor
+ */
 export function getTextStyles(textNodeCollection: TextNode[]): CSVModel[] {
   const _stylesObjArr: CSVModel[] = [];
   // Run through all nodes on page
