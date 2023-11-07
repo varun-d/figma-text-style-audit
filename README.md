@@ -45,4 +45,6 @@ Style Locale: Local Style, External Library, Mixed Style
 ### Todo and WIP
 
 1. Comment main sections
-2.
+2. Text Node - textStyleId, fillStyleId for text. These are critical!
+3. Component Node? How do we track styles
+4. Fix UI. Have a simple button to Download CSV of text stles/ fill styles

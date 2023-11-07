@@ -2,18 +2,7 @@ import { useState, useEffect } from "react";
 import { CSVLink } from "react-csv";
 import "./App.css";
 
-// const csvData = [
-//   ["firstname", "lastname", "email"],
-//   ["John", "Doe", "john.doe@xyz.com"],
-//   ["Jane", "Doe", "jane.doe@xyz.com"],
-// ];
-
-// const csvData2 = [
-//   { firstname: "Varun", lastname: "Dee", email: "VA@gmail.com" },
-//   { firstname: "Varun", lastname: "Dee", email: "VA@gmail.com" },
-//   { firstname: "Varun", lastname: "Dee", email: "VA@gmail.com" },
-// ];
-
+// Main entry point for the UI
 function App() {
   const [count, setCount] = useState(5);
   const [fileName, setFileName] = useState("");
@@ -29,11 +18,8 @@ function App() {
     setCount(parseInt(value));
   }
 
-  function handleSubmit() {
-    parent.postMessage(
-      { pluginMessage: { type: "submit", fileName, count } },
-      "*"
-    );
+  function handleGetTextStyles() {
+    parent.postMessage({ pluginMessage: { type: "text-styles" } }, "*");
   }
 
   function handleCancel() {
@@ -53,9 +39,10 @@ function App() {
         value={count}
         onChange={(e) => handleOnChange(e.target.value)}
       />
-      <button id="submit" onClick={handleSubmit}>
-        Submit
+      <button id="submit" onClick={handleGetTextStyles}>
+        Get Text Styles
       </button>
+
       {event && (
         <CSVLink data={event?.data?.pluginMessage}>Download me</CSVLink>
       )}
