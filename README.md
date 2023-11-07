@@ -48,3 +48,7 @@ Style Locale: Local Style, External Library, Mixed Style
 2. Text Node - textStyleId, fillStyleId for text. These are critical!
 3. Component Node? How do we track styles
 4. Fix UI. Have a simple button to Download CSV of text stles/ fill styles
+5. Have a place to ADD IDs too... This could be vital to connect the dots.
+6. Create image for Plugin
+7. Write writeup for Plugin
+8. Publish!!
