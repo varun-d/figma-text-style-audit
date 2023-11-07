@@ -12,10 +12,10 @@ enum libraryLocation {
 }
 
 type CSVModel = {
-  styleType: string;
-  nodeName: string;
-  styleName: string;
-  libraryLocation: libraryLocation;
+  styleType: string; // Text Style or Fill Style
+  nodeName: string; // Name of the node, like "Phone Number" or "Lorem Ipsum..." can be long!
+  styleName: string; // Name of the Style from a lib
+  libraryLocation: libraryLocation; // If in any library
 };
 
 /**
@@ -31,7 +31,7 @@ export function getTextNodeStyles(textNodeCollection: TextNode[]): CSVModel[] {
   textNodeCollection.map((node) => {
     const txtStyleID = node.textStyleId;
     const fillStyleID = node.fillStyleId;
-
+    console.log(node.fontSize, node.lineHeight, node.fontWeight);
     // Text Style added into _stylesObjArr
     if (txtStyleID != "") {
       if (txtStyleID === figma.mixed) {

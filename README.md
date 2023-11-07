@@ -44,11 +44,15 @@ Style Locale: Local Style, External Library, Mixed Style
 
 ### Todo and WIP
 
-1. Comment main sections
 2. Text Node - textStyleId, fillStyleId for text. These are critical!
-3. Component Node? How do we track styles
-4. Fix UI. Have a simple button to Download CSV of text stles/ fill styles
-5. Have a place to ADD IDs too... This could be vital to connect the dots.
+3. Fix UI. Have a simple button to Download CSV of text stles/ fill styles
+   Install tailwind
+4. Have a place to ADD IDs too... This could be vital to connect the dots. ID, properties like
+5. Can I pull in font size, spacing and line height too? Would that help?
 6. Create image for Plugin
 7. Write writeup for Plugin
 8. Publish!!
+
+### Future
+
+Component Node? How do we track styles
