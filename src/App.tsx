@@ -4,17 +4,16 @@ import "./App.css";
 
 // Main entry point for the UI
 function App() {
-  const [fileName, setFileName] = useState("");
   const [event, setEvent] = useState<MessageEvent | null>(null);
-  // Set a wait mode here, so when we click on LONG process, the UI changes to show warning on how it's still in progress...
 
+  // Future: This isn't easy due to single threaded Figma Plugin ... the UI should change to show "in progress" UI.
   useEffect(() => {
     onmessage = (event) => {
       setEvent(event);
     };
   }, []);
 
-  console.log(event);
+  // console.log(event);
 
   function handleGetTextStyles() {
     parent.postMessage({ pluginMessage: { type: "text-styles" } }, "*");
@@ -24,27 +23,46 @@ function App() {
     parent.postMessage({ pluginMessage: { type: "cancel" } }, "*");
   }
 
+  // Set Status and other Event variables here on useEffect re-renders
+  const status = event?.data?.pluginMessage.status;
+  const textNodesLength = event?.data?.pluginMessage.length;
+  const randomVal = new Date().getUTCMilliseconds();
+  const csvFilename = `text_style_audit_${randomVal}.csv`;
+
   return (
     <>
-      <h2>Style Audit</h2>
-      <input
-        id="fileName"
-        value={fileName}
-        onChange={(e) => setFileName(e.target.value)}
-      />
-      <button id="submit" onClick={handleGetTextStyles}>
-        Get Text Styles
+      <h2>Text Styles Audit</h2>
+      {status === "txtStyleLength" && (
+        <>
+          <p>You have {textNodesLength} text nodes.</p>
+          <p>
+            The export may take upto a minute if you have more than 10,000 text
+            nodes.
+          </p>
+        </>
+      )}
+      <button
+        id="submit"
+        onClick={handleGetTextStyles}
+        disabled={status === "txtStyleDone" ? true : false}
+      >
+        Generate Text Styles CSV
       </button>
 
-      {event?.data?.pluginMessage.status === "txtStyleDone" && (
-        <CSVLink data={event?.data?.pluginMessage.csvdata}>Download me</CSVLink>
+      {status === "txtStyleDone" && (
+        <button className="downloadcsv">
+          <CSVLink
+            data={event?.data?.pluginMessage.csvdata}
+            filename={csvFilename}
+          >
+            Download CSV
+          </CSVLink>
+        </button>
       )}
-      <button id="cancel" onClick={handleCancel}>
-        Cancel
+      <br></br>
+      <button className="cancelbtn" id="cancel" onClick={handleCancel}>
+        Close
       </button>
-      {event?.data?.pluginMessage.status === "txtStyleDone" && (
-        <p>Text Styles Done!</p>
-      )}
     </>
   );
 }

@@ -56,3 +56,24 @@ Style Locale: Local Style, External Library, Mixed Style
 ### Future
 
 Component Node? How do we track styles
+
+What's the main point of this plugin? 1 is to publish something asap.
+
+1. I publsih something
+2. Help with quick audit of all text nodes, and styles
+   But does that mean you need to export fontSize, lineHeight and other stuff too?
+   and what about the node content? Is that needed?
+
+No buts focus on 1 thing at a time.
+
+List of styles or none, and if its in an external library or not. As it is
+
+UI
+! Please note, this can take upto a minute based on the number of nodes you have!
+"Audit Text Styles"
+When Done -> "Download CSV"
+
+Release V1
+As we have today after the ui update
+Release V2
+Have a Pie Chart, and a small table with name/number of Styles and top 5 used, and least used styles

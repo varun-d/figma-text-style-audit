@@ -12,6 +12,8 @@ const text_nodes = figma.currentPage.findAllWithCriteria({
   types: ["TEXT"],
 });
 
+figma.ui.postMessage({ status: "txtStyleLength", length: text_nodes.length });
+
 // Calls to "parent.postMessage" from within the HTML page will trigger this
 // callback. The callback will be passed the "pluginMessage" property of the
 // posted message.
