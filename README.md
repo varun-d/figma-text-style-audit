@@ -1,6 +1,6 @@
 # Style Audit
 
-A simple Figma plugin to track all styles across a file & pages.
+A simple Figma plugin to track all styles across a file & and the current page.
 
 ## Why do we need this plugin?
 
