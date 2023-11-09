@@ -16,7 +16,7 @@ We sorted this out by running the plugin on ONE big file with a copy of our main
 
 ## Contributing
 
-Feel free to contribute to this plugin. TODO: I will create a CONTRIBUTING.md file for fellow collaborators.
+Feel free to contribute to this plugin.
 
 ## Resources
 
@@ -27,14 +27,10 @@ https://forum.figma.com/t/figma-layers-tree-traversal-estimating-size/551
 
 # Notes
 
-textStyleId 1 -> WIP
-fillStyleId 3 -> WIP
-strokeStyleId -> WIP
-effectStyleId -> Todo
-gridStyleId -> Todo
-
-This is critical! "build:js": "esbuild src/code.ts --target=es2019 --bundle --outfile=dist/code.js",
-Or else your ? optional chaining will not work. Fuck the JS world...
+Code.ts is being built with the following command:
+This is critical!
+`build:js": "esbuild src/code.ts --target=es2019 --bundle --outfile=dist/code.js`
+Or else your ? optional chaining will not work. Bless the JS world...
 
 ## What's being Audited
 
