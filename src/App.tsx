@@ -48,6 +48,7 @@ function App() {
       >
         Generate Text Styles CSV
       </button>
+      <br></br>
 
       {status === "txtStyleDone" && (
         <button className="downloadcsv">

@@ -1,7 +1,7 @@
 import { getTextNodeStyles } from "./lib/getTextNodeStyles.ts";
 // Show the HTML page in "ui.html".
 figma.showUI(__html__);
-figma.ui.resize(300, 500);
+figma.ui.resize(600, 600);
 
 // Don't care about invisible
 figma.skipInvisibleInstanceChildren = true;

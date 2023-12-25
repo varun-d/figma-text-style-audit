@@ -1,22 +1,23 @@
 # Style Audit
 
-A simple Figma plugin to track all styles across a file & and the current page.
+A Figma plugin to export CSV for text styles and fill styles across TextNodes, for the current page.
 
 ## Why do we need this plugin?
 
-We have a primary design system serving about 80+ projects. Every year we update our design system.
+We have a primary design system serving 80+ projects. Every year we update our design system.
 It's difficult to track what styles are being used, and what styles aren't.
 
-Knowing what styles are least used / most used, we can have a plan to purge or keep styles.
+Knowing what styles are least used or most used, we can have a plan to purge or keep styles.
 
 ## Challenges with auditing styles
 
-Some challenges still remain. For example, running this plugin across multiple files.
-We sorted this out by running the plugin on ONE big file with a copy of our main design files. Think of this file like our case study. One advantage of this is we skip over drafts, trials and random archive pages within our normal design files.
+Some challenges still remain. For example, running this plugin across multiple files. Even running across pages will exponentially increase complexity.
+We run the plugin on one design file, and a selected page in Figma.
+This way we can skip over drafts, trials and random archive pages.
 
 ## Contributing
 
-Feel free to contribute to this plugin.
+Feel free to contribute to this plugin. Checkout CONTRIBUTING.md.
 
 ## Resources
 
@@ -25,40 +26,32 @@ https://www.figma.com/plugin-docs/api/properties/nodes-findallwithcriteria/
 https://forum.figma.com/t/how-to-process-nodes-asynchronously-in-batches/48304/8
 https://forum.figma.com/t/figma-layers-tree-traversal-estimating-size/551
 
-# Notes
+# Notes on contribution
 
-Code.ts is being built with the following command:
-This is critical!
-`build:js": "esbuild src/code.ts --target=es2019 --bundle --outfile=dist/code.js`
-Or else your ? optional chaining will not work. Bless the JS world...
+**Critical!**
 
-## What's being Audited
+Figma plugin needs two files. A code.ts (logic), and an index.html (UI).
 
-NodeType: Text or Object (shapes, frames, etc)
-Styles: Text Styles, fillColor and strokeColor
+Both files can be built with the following command:
+`bun run build`
+
+For dev needs, you can "watch" some changes using the other build commands in package.js like:
+`build:js` or `build:codewatch`
+
+Secondly, note the target command (es2019) in build. Needed for '?' optional chaining to work. Bless the JS world...
+`esbuild src/code.ts --target=es2019 --bundle --outfile=dist/code.js`
+
+## What's Audited
+
+NodeType: Text (as of Dec 2023)
+Styles: Text Style, Fill Style
 Style Locale: Local Style, External Library, Mixed Style
 
-### Todo and WIP
+### Todos and Future
 
 2. Text Node - textStyleId, fillStyleId for text. These are critical!
 3. Fix UI. Have a simple button to Download CSV of text stles/ fill styles
    Install tailwind
-4. Have a place to ADD IDs too... This could be vital to connect the dots. ID, properties like
-5. Can I pull in font size, spacing and line height too? Would that help?
-6. Create image for Plugin
-7. Write writeup for Plugin
-8. Publish!!
-
-### Future / Draft
-
-Component Node? How do we track styles
-
-UI
-! Please note, this can take upto a minute based on the number of nodes you have!
-"Audit Text Styles"
-When Done -> "Download CSV"
-
-Release V1
-As we have today after the ui update
-Release V2
-Have a Pie Chart, and a small table with name/number of Styles and top 5 used, and least used styles
+4. Future: Have a place to ADD IDs... This could be vital to connect the dots. ID, properties like
+5. Future: Can I pull in font size, spacing and line height too? Would that help?
+6. Future: Have a Pie Chart, and a small table with name/number of Styles and top 5 used, and least used styles
